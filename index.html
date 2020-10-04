@@ -4,10 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        img {
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class='avatars'>
+        
     </div>
-    <script src='app.js'></script>
+    <script>
+
+        const addMoreImages = function(num) {
+            for (let i = 0; i < num; i++) {
+                var moreImages = document.createElement('img');
+                let randomNum = Math.random() * 10000000;
+                moreImages.src = `http://api.adorable.io/avatars/${randomNum}`
+                document.querySelector('.avatars').appendChild(moreImages)
+            }
+        }
+        document.addEventListener('scroll',function (event) {
+            const scrollTop = (document.body.scrollTop || document.documentElement.scrollTop)
+        
+            if (document.body.scrollHeight <= scrollTop +window.innerHeight + 200) {
+                addMoreImages(6)
+                
+            }
+        });
+        addMoreImages(12)
+
+    </script>
 </body>
 </html>
